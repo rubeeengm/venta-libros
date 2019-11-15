@@ -2,8 +2,6 @@
 
 declare(strict_types = 1);
 
-namespace entidades;
-
 class Categoria {
 	private $id;
 	private $nombre;

@@ -2,14 +2,12 @@
 
 declare(strict_types = 1);
 
-namespace entidades;
-
 class Libro {
 	private $id;
 	private $nombre;
 	private $autor;
 	private $precio;
-	private $cantidad;
+	private $existencia;
 	private $idCategoria;
 
     public function getId() : int {
@@ -44,12 +42,12 @@ class Libro {
         $this->precio = $precio;
     }
 
-    public function getCantidad() : int {
-        return $this->cantidad;
+    public function getExistencia() : int {
+        return $this->existencia;
     }
 
-    public function setCantidad(int $cantidad) : void {
-        $this->cantidad = $cantidad;
+    public function setExistencia(int $existencia) : void {
+        $this->existencia = $existencia;
     }
 
     public function getIdCategoria() : int {

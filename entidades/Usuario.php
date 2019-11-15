@@ -2,14 +2,12 @@
 
 declare(strict_types = 1);
 
-namespace entidades;
-
 class Usuario {
 	private $id;
 	private $usuario;
 	private $contrasenia;
 	private $estado;
-	private $roleId;
+	private $idRol;
 
 	public function getTd() : int {
 		return $this->id;
@@ -43,11 +41,11 @@ class Usuario {
 		$this->estado = $estado;
 	}
 
-	public function getRoleId() : int {
-		return $this->roleId;
+	public function getIdRol() : int {
+		return $this->idRol;
 	}
 
-	public function setRoleId(int $roleId) : void {
-		$this->roleId = $roleId;
+	public function setIdRoL(int $idRol) : void {
+		$this->idRol = $idRol;
 	}
 }
