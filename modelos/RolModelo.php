@@ -1,21 +1,22 @@
 <?php
 declare(strict_types = 1);
 
-require_once 'entidades/Categoria.php';
+require_once 'entidades/Rol.php';
 require_once 'modelos/Modelo.php';
 
-class CategoriaModelo extends Modelo {
+class RolModelo extends Modelo {
     /**
-     * @param Categoria $categoria
+     * @param Rol $rol
      * @return int
      */
-    function insertar(Categoria $categoria) : int {
+    function insertar(Rol $rol) : int {
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'INSERT INTO CATEGORIAS (NOMBRE) VALUES (:nombre);'
+            'INSERT INTO ROLES (NOMBRE) VALUES (:nombre);'
         );
 
-        $statement->bindValue(':nombre', $categoria->getNombre());
+        $statement->bindValue(':nombre', $rol->getNombre());
+
         $statement->execute();
 
         $id = (int) $conexion->lastInsertId();
@@ -30,9 +31,11 @@ class CategoriaModelo extends Modelo {
      */
     function obtenerTodos() : ?array {
         $result = null;
-        $listaCategorias = null;
+        $listaRoles = null;
         $conexion = $this->obtenerConexion();
-        $statement = $conexion->prepare('SELECT U.ID, U.NOMBRE FROM CATEGORIAS AS U;');
+        $statement = $conexion->prepare(
+            'SELECT C.ID, C.NOMBRE FROM ROLES AS C;'
+        );
 
         $statement->execute();
 
@@ -40,25 +43,27 @@ class CategoriaModelo extends Modelo {
         $this->cerrarConexion();
 
         foreach ($result as $key => $value) {
-            $categoria = new Categoria();
-            $categoria->setId((int) $result[$key]["ID"]);
-            $categoria->setNombre($result[$key]["NOMBRE"]);
+            $rol = new Rol();
+            $rol->setId((int) $result[$key]["ID"]);
+            $rol->setNombre($result[$key]["NOMBRE"]);
 
-            $listaCategorias[] = $categoria;
+            $listaRoles[] = $rol;
         }
 
-        return $listaCategorias;
+        return $listaRoles;
     }
 
     /**
-     * @param Categoria $categoria
+     * @param Rol $rol
      */
-    function actualizar(Categoria $categoria) : void {
+    function actualizar(Rol $rol) : void {
         $conexion = $this->obtenerConexion();
-        $statement = $conexion->prepare('UPDATE CATEGORIAS SET NOMBRE = :nombre WHERE ID = :id;');
+        $statement = $conexion->prepare(
+            'UPDATE ROLES SET NOMBRE = :nombre WHERE ID = :id;'
+        );
 
-        $statement->bindValue(':nombre', $categoria->getNombre());
-        $statement->bindValue(':id', $categoria->getId());
+        $statement->bindValue(':nombre', $rol->getNombre());
+        $statement->bindValue(':id', $rol->getId());
 
         $statement->execute();
         $this->cerrarConexion();
@@ -69,7 +74,7 @@ class CategoriaModelo extends Modelo {
      */
     function eliminar(int $id) : void {
         $conexion = $this->obtenerConexion();
-        $statement = $conexion->prepare('DELETE FROM CATEGORIAS WHERE ID = :id;');
+        $statement = $conexion->prepare('DELETE FROM ROLES WHERE ID = :id;');
 
         $statement->bindValue(':id', $id);
 
