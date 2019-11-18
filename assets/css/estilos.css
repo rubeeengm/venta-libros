@@ -1,9 +1,19 @@
 .banner {
-	height: 60vh;
+	height: 300px;
 	width: 100%;
 }
 
 .banner img {
 	height : 100%;
   	width: 100%;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }

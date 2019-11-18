@@ -1,8 +1,8 @@
 <?php
 declare(strict_types = 1);
 
-require_once 'entidades/Usuario.php';
-require_once 'modelos/Modelo.php';
+require_once '../entidades/Usuario.php';
+require_once '../modelos/Modelo.php';
 
 class UsuarioModelo extends Modelo {
     /**
@@ -99,19 +99,28 @@ class UsuarioModelo extends Modelo {
      * @param string $usuario
      * @param string $contrasenia
      */
-    function login(string $usuario, string $contrasenia) : void {
+    function login(string $usuario, string $contrasenia) : int {
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'SELECT COUNT(ID) 
-            FROM USUARIOS 
-            WHERE USUARIO = :usuario 
-            AND CONTRASENIA = :contrasenia;'
+            'SELECT 
+                IF(COUNT(ID)>0,ID,0)
+            FROM 
+                USUARIOS 
+            WHERE 
+                USUARIO = :usuario
+            AND 
+                CONTRASENIA = :contrasenia;'
         );
 
         $statement->bindValue(':usuario', $usuario);
         $statement->bindValue(':contrasenia', $contrasenia);
 
         $statement->execute();
+        $resultado = $statement->fetch();
         $this->cerrarConexion();
+
+        $existe = (int) $resultado[0];
+
+        return $existe;
     }
 }
