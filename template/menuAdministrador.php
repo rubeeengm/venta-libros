@@ -10,21 +10,15 @@
   	<div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
       		<li class="nav-item active">
-        		<a class="nav-link" href="index.php">
+        		<a class="nav-link" href="panelAdministrador.php">
         			Home <span class="sr-only">(current)</span>
         		</a>
 		  	</li>
 			
 			<li class="nav-item">
-	            <a class="nav-link" href="catalogo.php">
-	              Catalago
+	            <a class="nav-link" href="#">
+	              	Libros
 	            </a>
-			</li>
-			  
-      		<li class="nav-item">
-        		<a class="nav-link" href="#">
-        			Contacto
-        		</a>
 			</li>
 	  	</ul>
 

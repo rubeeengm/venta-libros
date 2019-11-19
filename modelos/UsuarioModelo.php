@@ -1,8 +1,8 @@
 <?php
 declare(strict_types = 1);
 
-require_once '../entidades/Usuario.php';
-require_once '../modelos/Modelo.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/entidades/Usuario.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/modelos/Modelo.php';
 
 class UsuarioModelo extends Modelo {
     /**
@@ -136,5 +136,37 @@ class UsuarioModelo extends Modelo {
         $existe = (int) $resultado[0];
 
         return $existe;
+    }
+
+    function obtenerPorid(int $id) : ?Usuario {
+        $usuario = null;
+
+        $conexion = $this->obtenerConexion();
+        $statement = $conexion->prepare('
+            SELECT U.ID, U.USUARIO, U.CONTRASENIA, U.ESTADO, U.ROL
+            FROM USUARIOS 
+            AS U
+            WHERE U.ID = :id;'
+        );
+
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $this->cerrarConexion();
+
+        foreach ($result as $key => $value) {
+            $usuario = new Usuario();
+            $usuario->setId((int) $result[$key]["ID"]);
+            $usuario->setUsuario($result[$key]["USUARIO"]);
+            $usuario->setContrasenia($result[$key]["CONTRASENIA"]);
+            $usuario->setEstado((int) $result[$key]["ESTADO"]);
+            $usuario->setRoL((int) $result[$key]["ROL"]);
+
+            break;
+        }
+
+        return $usuario;
     }
 }

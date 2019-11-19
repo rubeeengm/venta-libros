@@ -4,7 +4,6 @@
 	<div class="row justify-content-center">
 		<div class="col col-md-6">
 			<form method="post" action="controladores/RegistroController.php">
-
 				<div class="form-group text-center">
                     <a class="navbar-brand" href="index.php">
                         <img src="assets/img/book-logo.png" alt="" style="height: 7vh; width: 7vh;">
@@ -13,8 +12,6 @@
                     <h2>Registro</h2>
                 </div>
 
-				
-
 				<div class="form-group">
 					<label> Nombre </label>
 					<input type="text" class="form-control" 
@@ -22,6 +19,7 @@
 						id="nombre"
 						name="nombre"
 						placeholder="Escriba su nombre" 
+						value="<?php if(isset($_GET['nombre'])){ echo $_GET['nombre']; }?>"
 					>
 				</div>
 
@@ -32,6 +30,7 @@
 						id="apellidos"
 						name="apellidos"
 						placeholder="Escriba sus apellidos"
+						value="<?php if(isset($_GET['apellidos'])){ echo $_GET['apellidos']; }?>"
 					>
 				</div>
 
@@ -42,6 +41,7 @@
 						id="correoElectronico"
 						name="correoElectronico"
 						placeholder="Escriba su correo electrónico"
+						value="<?php if(isset($_GET['correoElectronico'])){ echo $_GET['correoElectronico']; }?>"
 					>					
 				</div>
 
@@ -52,7 +52,18 @@
 						id="usuario"
 						name="usuario"
 						placeholder="Escriba su usuario"
+						value="<?php if(isset($_GET['usuario'])){ echo $_GET['usuario']; }?>"
 					>
+					<div class="" style="margin-top: 10px;">
+					<?php
+                    if(isset($_SESSION['error'])) {
+                        if(isset($_SESSION['error']) != null) {
+                            echo '<div class="alert alert-danger" role="alert">' . $_SESSION['error'] . '</div>';
+                            $_SESSION['error'] = null;
+                        }
+                    }
+                	?>
+					</div>
 				</div>
 
 				<div class="form-group">
@@ -78,17 +89,6 @@
 					id="btnRegistro" 
 					value="Registrarse"
 				>
-				<div class="form-group" style="margin-top: 10px;">
-					<?php
-                    if(isset($_SESSION['error'])) {
-                        if(isset($_SESSION['error']) != null) {
-                            echo '<div class="alert alert-danger" role="alert">' . $_SESSION['error'] . '</div>';
-                            $_SESSION['error'] = null;
-                        }
-                    }
-                ?>
-				</div>
-				
 			</form>
 		</div>
 	</div>
