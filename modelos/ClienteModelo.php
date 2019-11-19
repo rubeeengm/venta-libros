@@ -1,8 +1,8 @@
 <?php
 declare(strict_types = 1);
 
-require_once 'entidades/Cliente.php';
-require_once 'modelos/Modelo.php';
+require_once '../entidades/Cliente.php';
+require_once '../modelos/Modelo.php';
 
 class ClienteModelo extends Modelo {
     /**

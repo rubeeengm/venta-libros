@@ -15,9 +15,9 @@ if(isset($_POST['loginUsuario'])) {
 		);
 
 		if ($idUsuario > 0) {
-			 $_SESSION['idUsuario'] = $idUsuario;
+			$_SESSION['idUsuario'] = $idUsuario;
 
-			 header("Location: ../index.php");
+			header("Location: ../index.php");
 		} else {
 			header("Location: ../login.php");
 			$_SESSION['error'] = "El usuario o contraseña son incorrectos";

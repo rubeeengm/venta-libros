@@ -4,8 +4,15 @@
     <div class="row justify-content-center">
         <div class="col col-md-4">
             <form method="post" action="controladores/UsuarioController.php">
-                <div class="form-group">
+                <div class="form-group text-center">
+                    <a class="navbar-brand" href="index.php">
+                        <img src="assets/img/book-logo.png" alt="" style="height: 10vh; width: 10vh;">
+                    </a>
+
                     <p class="h4 mb-4">Inicio de Sesión</p>
+                </div>
+
+                <div class="form-group">
                     <input type="text" id="loginUsuario" name="loginUsuario" class="form-control mb-4" placeholder="Usuario">
                 </div>
 

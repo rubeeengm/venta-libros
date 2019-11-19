@@ -3,14 +3,24 @@
 <div class="container mt-3">
 	<div class="row justify-content-center">
 		<div class="col col-md-6">
-			<h1>Registro</h1>
+			<form method="post" action="controladores/RegistroController.php">
 
-			<form method="post" action="">
+				<div class="form-group text-center">
+                    <a class="navbar-brand" href="index.php">
+                        <img src="assets/img/book-logo.png" alt="" style="height: 7vh; width: 7vh;">
+                    </a>
+
+                    <h2>Registro</h2>
+                </div>
+
+				
+
 				<div class="form-group">
 					<label> Nombre </label>
 					<input type="text" class="form-control" 
 						required
 						id="nombre"
+						name="nombre"
 						placeholder="Escriba su nombre" 
 					>
 				</div>
@@ -20,6 +30,7 @@
 					<input type="text" class="form-control" 
 						required
 						id="apellidos"
+						name="apellidos"
 						placeholder="Escriba sus apellidos"
 					>
 				</div>
@@ -29,15 +40,17 @@
 					<input type="email" class="form-control"
 						required
 						id="correoElectronico"
+						name="correoElectronico"
 						placeholder="Escriba su correo electrónico"
 					>					
 				</div>
 
 				<div class="form-group">
 					<label> Usuario </label>
-					<input type="text" class="form-control" 
+					<input type="text" class="form-control"
 						required
 						id="usuario"
+						name="usuario"
 						placeholder="Escriba su usuario"
 					>
 				</div>
@@ -47,13 +60,14 @@
 					<input type="password" class="form-control" 
 						required
 						id="password"
+						name="password"
 						placeholder="Escriba su Contraseña"
 					>
 				</div>
 				
 				<div class="form-group">
 					<label>
-						<input type="checkbox" checked="checked">
+						<input type="checkbox" required>
 						<a href="#">
 							Aceptar términos y condiciones
 						</a>
@@ -64,9 +78,20 @@
 					id="btnRegistro" 
 					value="Registrarse"
 				>
+				<div class="form-group" style="margin-top: 10px;">
+					<?php
+                    if(isset($_SESSION['error'])) {
+                        if(isset($_SESSION['error']) != null) {
+                            echo '<div class="alert alert-danger" role="alert">' . $_SESSION['error'] . '</div>';
+                            $_SESSION['error'] = null;
+                        }
+                    }
+                ?>
+				</div>
+				
 			</form>
 		</div>
 	</div>
 </div>
 
-<?php require_once 'template/footer.php'; ?>
+<?php #require_once 'template/footer.php'; ?>

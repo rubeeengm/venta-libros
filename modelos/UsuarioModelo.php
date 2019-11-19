@@ -12,12 +12,11 @@ class UsuarioModelo extends Modelo {
     function insertar(Usuario $usuario) : int {
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'INSERT INTO USUARIOS (USUARIO, CONTRASENIA, IDROL) VALUES (:usuario, :contrasenia, :idRol)'
+            'INSERT INTO USUARIOS (USUARIO, CONTRASENIA) VALUES (:usuario, :contrasenia)'
         );
 
         $statement->bindValue(':usuario', $usuario->getUsuario());
         $statement->bindValue(':contrasenia', $usuario->getContrasenia());
-        $statement->bindValue(':idRol', $usuario->getIdRol());
 
         $statement->execute();
 
@@ -114,6 +113,21 @@ class UsuarioModelo extends Modelo {
 
         $statement->bindValue(':usuario', $usuario);
         $statement->bindValue(':contrasenia', $contrasenia);
+
+        $statement->execute();
+        $resultado = $statement->fetch();
+        $this->cerrarConexion();
+
+        $existe = (int) $resultado[0];
+
+        return $existe;
+    }
+
+    function verificarExistenciaUsuario(string $usuario) : int {
+        $conexion = $this->obtenerConexion();
+        $statement = $conexion->prepare('SELECT COUNT(ID) FROM USUARIOS WHERE USUARIO = :usuario;');
+
+        $statement->bindValue(':usuario', $usuario);
 
         $statement->execute();
         $resultado = $statement->fetch();

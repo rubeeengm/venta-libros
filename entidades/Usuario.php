@@ -6,7 +6,7 @@ class Usuario {
 	private $usuario;
 	private $contrasenia;
 	private $estado;
-	private $idRol;
+	private $rol;
 
     /**
      * @return int
@@ -67,14 +67,14 @@ class Usuario {
     /**
      * @return int
      */
-	public function getIdRol() : int {
-		return $this->idRol;
+	public function getRol() : int {
+		return $this->rol;
 	}
 
     /**
-     * @param int $idRol
+     * @param int $rol
      */
-	public function setIdRoL(int $idRol) : void {
-		$this->idRol = $idRol;
+	public function setRoL(int $rol) : void {
+		$this->rol = $rol;
 	}
 }
