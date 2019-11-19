@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-require_once '../modelos/UsuarioModelo.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/modelos/UsuarioModelo.php';
 
 session_start();
 
@@ -17,7 +17,13 @@ if(isset($_POST['loginUsuario'])) {
 		if ($idUsuario > 0) {
 			$_SESSION['idUsuario'] = $idUsuario;
 
-			header("Location: ../index.php");
+			$usuario = $usuarioModelo->obtenerPorid($idUsuario);
+
+			if($usuario->getRol()) {
+				header("Location: ../panelAdministrador.php");
+			} else {
+				header("Location: ../index.php");
+			}
 		} else {
 			header("Location: ../login.php");
 			$_SESSION['error'] = "El usuario o contraseña son incorrectos";

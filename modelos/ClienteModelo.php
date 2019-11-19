@@ -1,8 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-require_once '../entidades/Cliente.php';
-require_once '../modelos/Modelo.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/entidades/Cliente.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/entidades/Usuario.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/modelos/Modelo.php';
 
 class ClienteModelo extends Modelo {
     /**
@@ -38,7 +39,21 @@ class ClienteModelo extends Modelo {
         $listaClientes = null;
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'SELECT C.ID, C.NOMBRE, C.APELLIDO, C.CORREOELECTRONICO, C.IDUSUARIO FROM CLIENTES AS C;'
+            'SELECT 
+                C.ID
+                , C.NOMBRE
+                , C.APELLIDO
+                , C.CORREOELECTRONICO
+                , U.USUARIO
+                , U.CONTRASENIA
+                , U.ESTADO
+            FROM 
+                CLIENTES AS C
+            JOIN
+                USUARIOS AS U
+            ON
+                C.IDUSUARIO = U.ID
+            ;'
         );
 
         $statement->execute();
@@ -52,7 +67,13 @@ class ClienteModelo extends Modelo {
             $cliente->setNombre($result[$key]["NOMBRE"]);
             $cliente->setApellido($result[$key]["APELLIDO"]);
             $cliente->setCorreoelectronico($result[$key]["CORREOELECTRONICO"]);
-            $cliente->setIdUsuario((int) $result[$key]["IDUSUARIO"]);
+            
+            $usuario = new Usuario();
+            $usuario->setUsuario($result[$key]["USUARIO"]);
+            $usuario->setContrasenia($result[$key]["CONTRASENIA"]);
+            $usuario->setEstado((int) $result[$key]["ESTADO"]);
+
+            $cliente->setUsuario($usuario);
 
             $listaClientes[] = $cliente;
         }

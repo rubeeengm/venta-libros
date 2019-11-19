@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-require_once '../config.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/config.php';
 
 abstract class Modelo {
     /**

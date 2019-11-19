@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-require_once '../modelos/UsuarioModelo.php';
-require_once '../modelos/ClienteModelo.php';
-require_once '../entidades/Usuario.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/modelos/UsuarioModelo.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/modelos/ClienteModelo.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/entidades/Usuario.php';
 
 session_start();
 
@@ -22,8 +22,20 @@ if(!isset($_POST['nombre'])) {
 	$existe = $usuarioModelo->verificarExistenciaUsuario($_POST['usuario']);
 
 	if($existe) {
+		$nombre = $_POST['nombre'];
+		$apellidos = $_POST['apellidos'];
+		$correoElectronico = $_POST['correoElectronico'];
+		$usuario = $_POST['usuario'];
+
 		$_SESSION['error'] = "El usuario ya existe";
-		header("Location: ../registro.php");
+
+		$rutaInfo = 
+			'?nombre=' . $nombre 
+			. '&apellidos=' . $apellidos
+			. '&correoElectronico=' . $correoElectronico
+			. '&usuario=' . $usuario;
+
+		header("Location: ../registro.php" . $rutaInfo);
 	} else {
 		$usuario = new Usuario();
 		$usuario->setUsuario($_POST['usuario']);

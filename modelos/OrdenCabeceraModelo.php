@@ -1,8 +1,8 @@
 <?php
 declare(strict_types = 1);
 
-require_once 'entidades/OrdenCabecera.php';
-require_once 'modelos/Modelo.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/entidades/OrdenCabecera.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/modelos/Modelo.php';
 
 class OrdenCabeceraModelo extends Modelo {
     /**

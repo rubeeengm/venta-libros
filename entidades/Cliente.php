@@ -1,12 +1,15 @@
 <?php
 declare(strict_types = 1);
 
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/entidades/Usuario.php';
+
 class Cliente {
 	private $id;
 	private $nombre;
 	private $apellido;
 	private $correoelectronico;
     private $idUsuario;
+    private $usuario;
 
     /**
      * @return int
@@ -76,5 +79,13 @@ class Cliente {
      */
     public function setIdUsuario(int $idUsuario) : void {
         $this->idUsuario = $idUsuario;
+    }
+
+    public function getUsuario() : Usuario {
+        return $this->usuario;
+    }
+
+    public function setUsuario(Usuario $usuario) : void {
+        $this->usuario = $usuario;
     }
 }
