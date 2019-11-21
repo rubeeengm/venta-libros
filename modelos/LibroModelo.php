@@ -39,7 +39,8 @@ class LibroModelo extends Modelo {
         $listaLibros = null;
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'SELECT L.ID, L.NOMBRE, L.AUTOR, L.PRECIO, L.EXISTENCIA, L.IDCATEGORIA FROM LIBROS AS L;'
+            'SELECT L.ID, L.NOMBRE, L.AUTOR, L.PRECIO, L.EXISTENCIA, L.IDCATEGORIA, L.IMAGEN, C.NOMBRE AS CATEGORIA FROM LIBROS AS L
+JOIN CATEGORIAS AS C ON L.IDCATEGORIA = C.ID;'
         );
 
         $statement->execute();
@@ -55,6 +56,8 @@ class LibroModelo extends Modelo {
             $libro->setPrecio((float) $result[$key]["PRECIO"]);
             $libro->setExistencia((int) $result[$key]["EXISTENCIA"]);
             $libro->setIdCategoria((int) $result[$key]["IDCATEGORIA"]);
+            $libro->setImagen($result[$key]["IMAGEN"]);
+            $libro->setCategoria($result[$key]["CATEGORIA"]);
 
             $listaLibros[] = $libro;
         }

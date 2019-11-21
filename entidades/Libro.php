@@ -8,6 +8,8 @@ class Libro {
 	private $precio;
 	private $existencia;
 	private $idCategoria;
+    private $imagen;
+    private $categoria;
 
     /**
      * @return int
@@ -91,5 +93,21 @@ class Libro {
      */
     public function setIdCategoria(int $idCategoria) : void {
         $this->idCategoria = $idCategoria;
+    }
+
+    public function getImagen() : string {
+        return $this->imagen;
+    }
+
+    public function setImagen(string $imagen) : void {
+        $this->imagen = $imagen;
+    }
+    
+    public function getCategoria() : string {
+        return $this->categoria;
+    }
+
+    public function setCategoria(string $categoria) {
+        $this->categoria = $categoria;
     }
 }
