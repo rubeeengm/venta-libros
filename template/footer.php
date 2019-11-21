@@ -1,16 +1,12 @@
-		<div class="footer">
-			<!-- Footer -->
-			<footer class="page-footer font-small blue">
-
-	  			<!-- Copyright -->
-	  			<div class="footer-copyright text-center py-3">© 2018 Copyright:
-	    			<a href="https://mdbootstrap.com/education/bootstrap/"> VentaLibros.com</a>
-	  			</div>
-	  			<!-- Copyright -->
-
-			</footer>
-			<!-- Footer -->
-		</div>
+		<footer class="app-footer">
+			<div class="app-empresa">
+				<h4>Empresa</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				<span class="icon-facebook app-icon1"></span>
+				<span class="icon-twitter app-icon1"></span>
+				<span class="icon-youtube app-icon1"></span>
+			</div>
+		</footer>
 
 		<script src="assets/js/jquery-3.4.1.min.js"></script>
 		<script src="assets/js/popper.min.js"></script>

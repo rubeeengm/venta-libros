@@ -1,5 +1,13 @@
 <?php require_once 'template/menu.php'; ?>
 
+<?php
+	/*if(isset($_SESSION['rol'])) {
+		if ($_SESSION['rol'] == 1) {
+			header("Location: panelAdministrador.php");
+		}
+	}*/
+?>
+
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   	<ol class="carousel-indicators">
 		<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -30,4 +38,10 @@
 		<span class="carousel-control-next-icon" aria-hidden="true"></span>
 		<span class="sr-only">Next</span>
 	</a>
+</div>
+
+<div class="container" style="margin-top: 15px;">
+	<div class="col">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut similique laborum, consequuntur nobis natus commodi molestiae voluptatem amet vel, illum sint est non et deleniti officiis laboriosam, accusamus ex vero?
+	</div>
 </div>

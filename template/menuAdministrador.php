@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="#">
+	<a class="navbar-brand" href="panelAdministrador.php">
 		<img src="assets/img/book-logo.png" alt="" style="height: 5vh; width: 5vh;">
 	</a>
 
@@ -16,9 +16,15 @@
 		  	</li>
 			
 			<li class="nav-item">
-	            <a class="nav-link" href="#">
+	            <a class="nav-link" href="libros.php">
 	              	Libros
 	            </a>
+			</li>
+
+			<li class="nav-item">
+        		<a class="nav-link" href="politicaPrivacidad.php">
+        			Politica de Privacidad
+        		</a>
 			</li>
 	  	</ul>
 
@@ -26,7 +32,7 @@
 	    	<div class="nav-item">
 	    		<?php 
 	    			if(isset($_SESSION['idUsuario'])) {
-	    				echo '<a class="nav-link" href="controladores/cerrarSesion.php" title="">Cerrar Sesión</a>';
+	    				echo '<a class="nav-link" href="controladores/CerrarSesion.php" title="">Cerrar Sesión</a>';
 	    			} else {
 	    				echo '<a class="nav-link" href="login.php" title="">Iniciar Sesión</a>';
 	    			}
