@@ -31,6 +31,37 @@ class LibroModelo extends Modelo {
         return $id;
     }
 
+    function obtenerPorId(int $id) : ?Libro {
+        $result = null;
+        $libro = null;
+        $conexion = $this->obtenerConexion();
+        $statement = $conexion->prepare(
+            'SELECT L.ID, L.NOMBRE, L.AUTOR, L.PRECIO, L.EXISTENCIA, L.IDCATEGORIA, L.IMAGEN 
+            FROM LIBROS AS L
+            WHERE ID = :id;'
+        );
+
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $this->cerrarConexion();
+
+        foreach ($result as $key => $value) {
+            $libro = new Libro();
+            $libro->setId((int) $result[$key]["ID"]);
+            $libro->setNombre($result[$key]["NOMBRE"]);
+            $libro->setAutor($result[$key]["AUTOR"]);
+            $libro->setPrecio((float) $result[$key]["PRECIO"]);
+            $libro->setExistencia((int) $result[$key]["EXISTENCIA"]);
+            $libro->setIdCategoria((int) $result[$key]["IDCATEGORIA"]);
+            $libro->setImagen($result[$key]["IMAGEN"]);
+            break;
+        }
+
+        return $libro;
+    }
+
     /**
      * @return array|null
      */

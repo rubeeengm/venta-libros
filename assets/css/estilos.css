@@ -24,3 +24,45 @@
 .app-empresa {
   margin-bottom: 20px;
 }
+
+.cart-total-text a{
+  float:right;
+}
+
+.cart-view-table-front{
+  font-size: 0.7em;
+  position: fixed;
+  right: 10px;
+  max-width: 350px;
+  font-family: Arial
+}
+.cart-view-table-front h3{
+  text-align: center;
+  padding: 0;
+  margin: 0px 0px 6px 0px;
+}
+.cart-view-table-front, .cart-view-table-back {
+  max-width: 700px;
+  background-color: #FFFFFF;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.12);
+  border: 1px solid #E4E4E4;
+}
+.cart-view-table-front table th, .cart-view-table-back table th{
+  text-align: left;
+}
+.cart-view-table-front table thead, .cart-view-table-back table thead{
+  background-color: #9CCDFD;
+}
+.cart-view-table-front table tbody tr.even, .cart-view-table-back table tbody tr.even{
+  background-color: #F7F7F7;
+}
+.cart-view-table-front table tbody tr.odd, .cart-view-table-back table tbody tr.odd{
+  background-color: #EDEDED;
+}
+.cart-view-table-front button, .cart-view-table-front .button, .cart-view-table-back button, .cart-view-table-back .button{
+  margin: 10px 1px;
+  float: right;
+}

@@ -22,6 +22,12 @@
 			</li>
 
 			<li class="nav-item">
+	            <a class="nav-link" href="categoria.php">
+	              	Categorias
+	            </a>
+			</li>
+
+			<li class="nav-item">
         		<a class="nav-link" href="politicaPrivacidad.php">
         			Politica de Privacidad
         		</a>
