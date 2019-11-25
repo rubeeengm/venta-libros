@@ -51,7 +51,7 @@ if(!isset($_POST['nombre'])) {
 
 		$clienteModelo = new ClienteModelo();
 		$idCliente = $clienteModelo->insertar($cliente);
-		$_SESSION['idCliente'] = $idCliente;
+		$_SESSION['clienteId'] = $idCliente;
 		$_SESSION['idUsuario'] = $idUsuario;
 
 	 	header("Location: ../index.php");

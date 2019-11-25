@@ -1,6 +1,4 @@
 <?php 
-    declare(strict_types = 1);
-    session_start();
     require_once 'template/header.php'; 
     require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/modelos/OrdenCabeceraModelo.php';
     $ordenCabeceraModelo = new OrdenCabeceraModelo();
@@ -29,7 +27,7 @@
 				</thead>
   				
   				<tbody>
-  					<?php foreach ($ordenes as $orden): ?>
+  					<?php if($ordenes != null) foreach ($ordenes as $orden): ?>
 	    				<tr>
 	      					<th scope="row">
 	      						<?php echo $orden->getId(); ?>
