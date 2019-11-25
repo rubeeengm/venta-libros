@@ -30,8 +30,6 @@
 								$total =0;
 								$b = 0;
 
-								var_dump($_SESSION["cart_products"]);
-
 								foreach ($_SESSION["cart_products"] as $cart_itm) {
 									$product_name = $cart_itm["product_name"];
 									$product_qty = $cart_itm["cantidad"];
@@ -47,7 +45,7 @@
 								}
 
 								echo '<td colspan="4">';
-								echo '<button style="margin-right: 5px;" class="btn btn-info" type="submit">Actualizar</button><a href="view_cart.php" class="btn btn-info">Pagar</a>';
+								echo '<button style="margin-right: 5px;" class="btn btn-info" type="submit">Actualizar</button><a href="pagar.php" class="btn btn-info">Pagar</a>';
 								echo '</td>';
 								echo '</tbody>';
 								echo '</table>';

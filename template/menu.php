@@ -40,7 +40,7 @@
 	    	<div class="nav-item">
 	    		<?php 
 	    			if(isset($_SESSION['idUsuario'])) {
-	    				echo '<a class="nav-link" href="controladores/CerrarSesion.php" title="">Cerrar Sesión</a>';
+	    				echo '<a class="nav-link" href="controladores/cerrarSesion.php" title="">Cerrar Sesión</a>';
 	    			} else {
 	    				echo '<a class="nav-link" href="login.php" title="">Iniciar Sesión</a>';
 	    			}
