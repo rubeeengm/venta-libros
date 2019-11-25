@@ -13,7 +13,7 @@ class ClienteModelo extends Modelo {
     function insertar(Cliente $cliente) : int {
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'INSERT INTO CLIENTES (NOMBRE, APELLIDO, CORREOELECTRONICO, IDUSUARIO) 
+            'INSERT INTO CLIENTES (NOMBRE, APELLIDO, CORREOELECTRONICO, IDUSUARIO)
             VALUES (:nombre, :apellido, :correoElectronico, :idUsuario);'
         );
 
@@ -31,6 +31,33 @@ class ClienteModelo extends Modelo {
         return $id;
     }
 
+    function obtenerPorIdUsuario(int $id) : ?Cliente {
+        $result = null;
+        $cliente = null;
+
+        $conexion = $this->obtenerConexion();
+        $statement = $conexion->prepare('SELECT C.ID, C.NOMBRE, C.APELLIDO, C.CORREOELECTRONICO, C.IDUSUARIO FROM CLIENTES AS C WHERE C.IDUSUARIO = :id;');
+
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $this->cerrarConexion();
+
+        foreach ($result as $key => $value) {
+            $cliente = new Cliente();
+            $cliente->setId((int) $result[$key]["ID"]);
+            $cliente->setNombre($result[$key]["NOMBRE"]);
+            $cliente->setApellido($result[$key]["APELLIDO"]);
+            $cliente->setCorreoelectronico($result[$key]["CORREOELECTRONICO"]);
+            $cliente->setId((int) $result[$key]["IDUSUARIO"]);
+
+            break;
+        }
+
+        return $cliente;
+    }
+
     /**
      * @return array|null
      */
@@ -39,7 +66,7 @@ class ClienteModelo extends Modelo {
         $listaClientes = null;
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'SELECT 
+            'SELECT
                 C.ID
                 , C.NOMBRE
                 , C.APELLIDO
@@ -47,7 +74,7 @@ class ClienteModelo extends Modelo {
                 , U.USUARIO
                 , U.CONTRASENIA
                 , U.ESTADO
-            FROM 
+            FROM
                 CLIENTES AS C
             JOIN
                 USUARIOS AS U
@@ -67,7 +94,7 @@ class ClienteModelo extends Modelo {
             $cliente->setNombre($result[$key]["NOMBRE"]);
             $cliente->setApellido($result[$key]["APELLIDO"]);
             $cliente->setCorreoelectronico($result[$key]["CORREOELECTRONICO"]);
-            
+
             $usuario = new Usuario();
             $usuario->setUsuario($result[$key]["USUARIO"]);
             $usuario->setContrasenia($result[$key]["CONTRASENIA"]);
@@ -87,11 +114,11 @@ class ClienteModelo extends Modelo {
     function actualizar(Cliente $cliente) : void {
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'UPDATE CLIENTES 
+            'UPDATE CLIENTES
             SET NOMBRE = :nombre
             , APELLIDO = :apellido
             , CORREOELECTRONICO = :correoElectronico
-            , IDUSUARIO = :idUsuario 
+            , IDUSUARIO = :idUsuario
             WHERE ID = :id;'
         );
 

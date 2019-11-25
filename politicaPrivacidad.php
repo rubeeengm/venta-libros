@@ -1,7 +1,7 @@
 <?php require_once 'template/header.php'; ?>
-<?php 
+<?php
     if(isset($_SESSION['rol']) && $_SESSION['rol'] == 1){
-        require_once 'template/menuAdministrador.php';  
+        require_once 'template/menuAdministrador.php';
     } else {
         require_once 'template/menu.php';
     }
@@ -17,17 +17,17 @@
                 <p>Fecha efectiva: Marzo 25, 2019</p>
 
 
-                <p>Proday ("nosotros", "a nosotros", "nuestro") opera el sitio web www.proday.mx (en adelante, el "Servicio").</p>
+                <p>Librosss ("nosotros", "a nosotros", "nuestro") opera el sitio web www.Librosss.mx (en adelante, el "Servicio").</p>
 
                 <p>Esta página le informa de nuestras políticas en materia de recopilación, uso y divulgación de datos personales cuando utiliza nuestro Servicio y de las opciones de las que dispone en relación con esos datos.</p>
 
-                <p>Utilizamos sus datos para prestarle el Servicio y mejorarlo. Al utilizar el Servicio, usted acepta la recopilación y el uso de información de conformidad con esta política. A menos que esta Política de privacidad defina lo contrario, los términos utilizados en ella tienen los mismos significados que nuestros Términos y Condiciones, disponibles en el www.proday.mx</p>
+                <p>Utilizamos sus datos para prestarle el Servicio y mejorarlo. Al utilizar el Servicio, usted acepta la recopilación y el uso de información de conformidad con esta política. A menos que esta Política de privacidad defina lo contrario, los términos utilizados en ella tienen los mismos significados que nuestros Términos y Condiciones, disponibles en el www.Librosss.mx</p>
 
                 <h2>Definiciones</h2>
                 <ul>
                     <li>
                         <p><strong>Servicio</strong></p>
-                        <p>Servicio es el sitio web www.proday.mx operado por Proday</p>
+                        <p>Servicio es el sitio web www.Librosss.mx operado por Librosss</p>
                     </li>
                     <li>
                         <p><strong>Datos personales</strong></p>
@@ -72,7 +72,7 @@
                 </ul>
 
                 <h2>Uso de datos</h2>
-                <p>Proday utiliza los datos recopilados con diversas finalidades:</p>
+                <p>Librosss utiliza los datos recopilados con diversas finalidades:</p>
                 <ul>
                     <li>Suministrar y mantener nuestro Servicio</li>
                     <li>Notificarle cambios en nuestro Servicio</li>
@@ -87,15 +87,15 @@
                 <p>Su información, incluyendo Datos personales, puede ser transferida a —y mantenida en— ordenadores localizados fuera de su estado, provincia, país u otra jurisdicción gubernamental donde las leyes de protección de datos pueden diferir de las de su jurisdicción.</p>
                 <p>Si usted se encuentra fuera de Mexico y decide facilitarnos información, tenga en cuenta que nosotros transferimos los datos, incluyendo Datos personales, a Mexico y que los tratamos allí.</p>
                 <p>Su aceptación de esta Política de privacidad seguida de su envío de esta información representa que está de acuerdo con dicha transferencia.</p>
-                <p>Proday emprenderá todas las medidas razonables necesarias para garantizar que sus datos sean tratados de forma segura y de conformidad con esta Política de privacidad y no se realizará ninguna transferencia de sus Datos personales a una organización o país, salvo que existan unos controles adecuados establecidos incluyendo la seguridad de sus datos y otra información personal.</p>
+                <p>Librosss emprenderá todas las medidas razonables necesarias para garantizar que sus datos sean tratados de forma segura y de conformidad con esta Política de privacidad y no se realizará ninguna transferencia de sus Datos personales a una organización o país, salvo que existan unos controles adecuados establecidos incluyendo la seguridad de sus datos y otra información personal.</p>
 
                 <h2>Divulgación de datos</h2>
 
                 <h3>Requisitos legales</h3>
-                <p>Proday puede divulgar sus Datos personales de buena fe cuando considere que esta acción es necesaria para lo siguiente:</p>
+                <p>Librosss puede divulgar sus Datos personales de buena fe cuando considere que esta acción es necesaria para lo siguiente:</p>
                 <ul>
                     <li>Cumplir una obligación legal</li>
-                    <li>Proteger y defender los derechos o bienes de Proday</li>
+                    <li>Proteger y defender los derechos o bienes de Librosss</li>
                     <li>Prevenir o investigar posibles infracciones en relación con el Servicio</li>
                     <li>Proteger la seguridad personal de usuarios del Servicio o del público</li>
                     <li>Protegerse frente a consecuencias legales</li>
@@ -138,8 +138,8 @@
                 <h2>Contacte con nosotros</h2>
                 <p>Si tiene alguna pregunta sobre esta Política de privacidad, contacte con nosotros: </p>
                 <ul>
-                    <li>Por e-mail: info@proday.mx</li>
-                    <li>Visitando esta página en nuestro sitio web: www.proday.mx/contacto</li>
+                    <li>Por e-mail: info@Librosss.mx</li>
+                    <li>Visitando esta página en nuestro sitio web: www.Librosss.mx/contacto</li>
 
                 </ul>
             </div>

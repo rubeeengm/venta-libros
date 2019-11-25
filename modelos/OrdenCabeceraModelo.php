@@ -12,11 +12,10 @@ class OrdenCabeceraModelo extends Modelo {
     function insertar(OrdenCabecera $ordenCabecera) : int {
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'INSERT INTO ORDENESCABECERA (FECHA, IVA, TOTAL, IDCLIENTE) 
+            'INSERT INTO ORDENESCABECERA (FECHA, IVA, TOTAL, IDCLIENTE)
             VALUES (NOW(), :iva, :total, :idCliente);'
         );
 
-        $statement->bindValue(':fecha', $ordenCabecera->getFecha());
         $statement->bindValue(':iva', $ordenCabecera->getIva());
         $statement->bindValue(':total', $ordenCabecera->getTotal());
         $statement->bindValue(':idCliente', $ordenCabecera->getIdCliente());
