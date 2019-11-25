@@ -30,7 +30,6 @@
 					  	<th scope="col">Nombre</th>
 					  	<th scope="col">Autor</th>
 					  	<th scope="col">Precio</th>
-					  	<th scope="col">Existencia</th>
 					  	<th scope="col">idCategoria</th>
 					  	<th scope="col">Acción</th>
 					</tr>
@@ -56,20 +55,17 @@
 					      	</td>
 
 					      	<td>
-					      		<?php echo $libro->getExistencia(); ?>
-					      	</td>
-
-					      	<td>
 					      		<?php echo $libro->getCategoria(); ?>
 					      	</td>
 
 					      	<td>
-					      		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Modificar</button>
+								<?php  echo '<a href="formularioLibro.php?id='.$libro->getId().'" class="btn btn-info">Modificar</a>'; ?>
 					      	</td>
 	    				</tr>
 	    			<?php endforeach; ?>
   				</tbody>
 			</table>
+			<?php echo '<a href="nuevoLibro.php" class="btn btn-info">Nuevo Libro</a>'; ?>
 		</div>
 	</div>
 </div>

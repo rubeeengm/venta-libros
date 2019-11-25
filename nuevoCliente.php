@@ -80,6 +80,8 @@
 					id="btnRegistro" 
 					value="Registrarse"
 				>
+
+				<?php  echo '<a href="panelAdministrador.php" class="btn btn-danger">Cancelar</a>'; ?>
 			</form>
 		</div>
 	</div>

@@ -23,7 +23,6 @@
 					  	<th scope="col">Subtotal</th>
 					  	<th scope="col">IVA</th>
 					  	<th scope="col">Total</th>
-                        <th scope="col">Acción</th>
 					</tr>
 				</thead>
   				
@@ -48,10 +47,6 @@
 
 					      	<td>
 					      		$<?php echo $orden->getTotal(); ?>
-					      	</td>
-
-					      	<td>
-					      		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Modificar</button>
 					      	</td>
 	    				</tr>
 	    			<?php endforeach; ?>

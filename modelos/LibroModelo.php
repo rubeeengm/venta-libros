@@ -12,15 +12,16 @@ class LibroModelo extends Modelo {
     function insertar(Libro $libro) : int {
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            "INSERT INTO LIBROS(NOMBRE, AUTOR, PRECIO, EXISTENCIA, IDCATEGORIA) 
-                         VALUES (:nombre, :autor, :precio, :existencia, :idCategoria);"
+            "INSERT INTO LIBROS(NOMBRE, AUTOR, PRECIO, EXISTENCIA, IDCATEGORIA, IMAGEN) 
+                         VALUES (:nombre, :autor, :precio, :existencia, :idCategoria, :imagen);"
         );
 
         $statement->bindValue(':nombre', $libro->getNombre());
         $statement->bindValue(':autor', $libro->getAutor());
         $statement->bindValue(':precio', $libro->getPrecio());
-        $statement->bindValue(':existencia', $libro->getExistencia());
+        $statement->bindValue(':existencia', 50);
         $statement->bindValue(':idCategoria', $libro->getIdCategoria());
+        $statement->bindValue(':imagen', "prueba.png");
 
         $statement->execute();
 
@@ -106,7 +107,6 @@ JOIN CATEGORIAS AS C ON L.IDCATEGORIA = C.ID;'
             SET NOMBRE = :nombre
             , AUTOR = :autor
             , PRECIO = :precio
-            , EXISTENCIA = :existencia
             , IDCATEGORIA = :idCategoria 
             WHERE ID = :id;'
         );
@@ -114,7 +114,6 @@ JOIN CATEGORIAS AS C ON L.IDCATEGORIA = C.ID;'
         $statement->bindValue(':nombre', $libro->getNombre());
         $statement->bindValue(':autor', $libro->getAutor());
         $statement->bindValue(':precio', $libro->getPrecio());
-        $statement->bindValue(':existencia', $libro->getExistencia());
         $statement->bindValue(':idCategoria', $libro->getIdCategoria());
         $statement->bindValue(':id', $libro->getId());
 
