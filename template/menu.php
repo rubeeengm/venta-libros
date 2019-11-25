@@ -21,11 +21,15 @@
 	            </a>
 			</li>
 
-			<li class="nav-item">
-	            <a class="nav-link" href="ordenesUsuario.php">
-	              Mis Ordenes
-	            </a>
-			</li>
+			<?php
+				if(isset($_SESSION['idUsuario'])) {
+					echo '<li class="nav-item">
+					<a class="nav-link" href="ordenesUsuario.php">
+					  Mis Ordenes
+					</a>
+				</li>';
+				}
+			?>
 			  
       		<li class="nav-item">
         		<a class="nav-link" href="politicaPrivacidad.php">
@@ -69,6 +73,9 @@
 
 			<div class="modal-body">
 				<?php
+
+					$current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+					
 					if(isset($_SESSION["cart_products"]) && count($_SESSION["cart_products"])>0){
 						echo '<form method="post" action="agregarCarrito.php">';
 						echo '<table width="100%"  cellpadding="8" cellspacing="0">';
@@ -90,7 +97,7 @@
 						}
 
 						echo '<td colspan="4">';
-						echo '<button style="margin-right: 5px;" class="btn btn-info" type="submit">Actualizar</button><a href="pagar.php?url='.$current_url.'" class="btn btn-info">Pagar</a>';
+						echo '<button style="margin-right: 5px;" class="btn btn-info" type="submit">Actualizar</button><a href="pagar.php" class="btn btn-info">Pagar</a>';
 						echo '</td>';
 						echo '</tbody>';
 						echo '</table>';

@@ -1,7 +1,6 @@
 		<footer class="app-footer">
 			<div class="app-empresa">
-				<h4>Empresa</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				<p>Leer ayuda a la mente.</p>
 				<span class="icon-facebook app-icon1"></span>
 				<span class="icon-twitter app-icon1"></span>
 				<span class="icon-youtube app-icon1"></span>

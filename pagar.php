@@ -46,4 +46,4 @@ foreach ($_SESSION["cart_products"] as $key => $value) {
 unset($_SESSION['cart_products']);
 //back to return url
 $return_url = $_GET["url"];
-header('Location:'.$return_url);
+header('Location:ordenesUsuario.php');

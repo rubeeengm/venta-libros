@@ -6,7 +6,7 @@
 	$clienteModelo = new ClienteModelo(); 
 	$cliente = $clienteModelo->obtenerPorId((int) $_GET['id']);
 	$usuarioModelo = new UsuarioModelo();
-	$usuario = $usuarioModelo->obtenerPorid((int) $cliente->getId());
+	$usuario = $usuarioModelo->obtenerPorid((int) $cliente->getIdUsuario());
 ?>
 
 <div class="container mt-3">

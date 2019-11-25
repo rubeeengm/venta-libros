@@ -54,7 +54,7 @@ class ClienteModelo extends Modelo {
             $cliente->setNombre($result[$key]["NOMBRE"]);
             $cliente->setApellido($result[$key]["APELLIDO"]);
             $cliente->setCorreoelectronico($result[$key]["CORREOELECTRONICO"]);
-            $cliente->setId((int) $result[$key]["IDUSUARIO"]);
+            $cliente->setIdUsuario((int) $result[$key]["IDUSUARIO"]);
 
             break;
         }
