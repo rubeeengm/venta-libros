@@ -66,15 +66,11 @@ class UsuarioModelo extends Modelo {
             'UPDATE USUARIOS 
             SET USUARIO = :usuario
             , CONTRASENIA = :contrasenia
-            , ESTADO = :estado
-            , IDROL = :idRol 
             WHERE ID = :id;'
         );
 
         $statement->bindValue(':usuario', $usuario->getUsuario());
         $statement->bindValue(':contrasenia', $usuario->getContrasenia());
-        $statement->bindValue(':estado', $usuario->getEstado());
-        $statement->bindValue(':idRol', $usuario->getIdRol());
         $statement->bindValue(':id', $usuario->getId());
 
         $statement->execute();
@@ -140,7 +136,7 @@ class UsuarioModelo extends Modelo {
 
     function obtenerPorid(int $id) : ?Usuario {
         $usuario = null;
-
+        $result = null;
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare('
             SELECT U.ID, U.USUARIO, U.CONTRASENIA, U.ESTADO, U.ROL

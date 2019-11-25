@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="assets/css/estilos.css">
 		<link rel="stylesheet" href="assets/datatable/datatables.css">
 		<link rel="icon" type="image/png" sizes="16x16" href="assets/img/book-logo.png">
-		 <link rel="stylesheet" href="assets/css/icomoon.css">
+		<link rel="stylesheet" href="assets/css/icomoon.css">
 	</head>
 
 	<body>

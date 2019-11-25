@@ -58,6 +58,33 @@ class ClienteModelo extends Modelo {
         return $cliente;
     }
 
+    function obtenerPorId(int $id) : ?Cliente {
+        $result = null;
+        $cliente = null;
+
+        $conexion = $this->obtenerConexion();
+        $statement = $conexion->prepare('SELECT C.ID, C.NOMBRE, C.APELLIDO, C.CORREOELECTRONICO, C.IDUSUARIO FROM CLIENTES AS C WHERE C.ID = :id;');
+
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $this->cerrarConexion();
+
+        foreach ($result as $key => $value) {
+            $cliente = new Cliente();
+            $cliente->setId((int) $result[$key]["ID"]);
+            $cliente->setNombre($result[$key]["NOMBRE"]);
+            $cliente->setApellido($result[$key]["APELLIDO"]);
+            $cliente->setCorreoelectronico($result[$key]["CORREOELECTRONICO"]);
+            $cliente->setId((int) $result[$key]["IDUSUARIO"]);
+
+            break;
+        }
+
+        return $cliente;
+    }
+
     /**
      * @return array|null
      */
@@ -118,14 +145,12 @@ class ClienteModelo extends Modelo {
             SET NOMBRE = :nombre
             , APELLIDO = :apellido
             , CORREOELECTRONICO = :correoElectronico
-            , IDUSUARIO = :idUsuario
             WHERE ID = :id;'
         );
 
         $statement->bindValue(':nombre', $cliente->getNombre());
         $statement->bindValue(':apellido', $cliente->getApellido());
         $statement->bindValue(':correoElectronico', $cliente->getCorreoelectronico());
-        $statement->bindValue(':idUsuario', $cliente->getIdUsuario());
         $statement->bindValue(':id', $cliente->getId());
 
         $statement->execute();

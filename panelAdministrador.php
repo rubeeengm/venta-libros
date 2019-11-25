@@ -71,35 +71,12 @@
 					      	</td>
 
 					      	<td>
-					      		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Modificar</button>
+								<?php  echo '<a href="formularioCliente.php?id='.$cliente->getId().'" class="btn btn-info">Modificar</a>'; ?>
 					      	</td>
 	    				</tr>
 	    			<?php endforeach; ?>
   				</tbody>
 			</table>
-		</div>
-	</div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-	<div class="modal-dialog">
-		<!-- Modal content-->
-		<div class="modal-content">
-			<form method="post" action="action.php">
-				<div class="modal-header">
-		  			<h4 class="modal-title">Modificar</h4>
-		  			<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				
-				<div class="modal-body">
-		  			<p>Some text in the modal.</p>
-				</div>
-				
-				<div class="modal-footer">
-		  			<button type="submit" class="btn btn-info" data-dismiss="">Guardar</button>
-				</div>
-			</form>
 		</div>
 	</div>
 </div>

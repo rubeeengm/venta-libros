@@ -20,6 +20,12 @@
 	              Catalago
 	            </a>
 			</li>
+
+			<li class="nav-item">
+	            <a class="nav-link" href="ordenesUsuario.php">
+	              Mis Ordenes
+	            </a>
+			</li>
 			  
       		<li class="nav-item">
         		<a class="nav-link" href="politicaPrivacidad.php">
@@ -28,11 +34,11 @@
 			</li>
 			
 			<?php if(isset($_SESSION["cart_products"]) && count($_SESSION["cart_products"])>0) : ?>
-					<li class="nav-item">
-						<a class="nav-link" href="#exampleModal" data-toggle="modal" data-target="#exampleModal">
-							<img src="assets/img/cart.jpeg" alt="" style="width: 53px; height: 34px">
-						</a>
-					</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#exampleModal" data-toggle="modal" data-target="#exampleModal">
+						<img src="assets/img/cart.jpeg" alt="" style="width: 53px; height: 34px">
+					</a>
+				</li>
 			<?php endif; ?>
 	  	</ul>
 
@@ -49,3 +55,50 @@
 	    </div>
   	</div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Carrito de compras</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-body">
+				<?php
+					if(isset($_SESSION["cart_products"]) && count($_SESSION["cart_products"])>0){
+						echo '<form method="post" action="agregarCarrito.php">';
+						echo '<table width="100%"  cellpadding="8" cellspacing="0">';
+						echo '<tbody>';
+
+						foreach ($_SESSION["cart_products"] as $cart_itm) {
+							$product_name = $cart_itm["product_name"];
+							$product_qty = $cart_itm["cantidad"];
+							$product_price = $cart_itm["product_price"];
+							$product_code = $cart_itm["idLibro"];
+
+							echo '<td>Cant. <input type="text" size="2" maxlength="2" name="product_qty['.$product_code.']" value="'.$product_qty.'" /></td>';
+							echo '<td>'.$product_name.'</td>';
+							$total = ($product_price * $product_qty);
+							echo '<td>$'.$total.'&nbsp;</td>';
+							echo '<td><input type="checkbox" name="remove_code[]" value="'.$product_code.'" /> Remove</td>';
+							echo '</tr>';
+
+						}
+
+						echo '<td colspan="4">';
+						echo '<button style="margin-right: 5px;" class="btn btn-info" type="submit">Actualizar</button><a href="pagar.php?url='.$current_url.'" class="btn btn-info">Pagar</a>';
+						echo '</td>';
+						echo '</tbody>';
+						echo '</table>';
+						echo '<input type="hidden" name="return_url" value="'.$current_url.'" />';
+						echo '</form>';
+					}
+				?>
+			</div>
+		</div>
+	</div>
+</div>

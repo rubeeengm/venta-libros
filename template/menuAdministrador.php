@@ -28,6 +28,12 @@
 			</li>
 
 			<li class="nav-item">
+	            <a class="nav-link" href="ordenesUsuarios.php">
+	              Ordenes
+	            </a>
+			</li>
+
+			<li class="nav-item">
         		<a class="nav-link" href="politicaPrivacidad.php">
         			Politica de Privacidad
         		</a>

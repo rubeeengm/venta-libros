@@ -42,6 +42,8 @@
 
 <div class="container" style="margin-top: 15px;">
 	<div class="col">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut similique laborum, consequuntur nobis natus commodi molestiae voluptatem amet vel, illum sint est non et deleniti officiis laboriosam, accusamus ex vero?
+		<p>
+		Bienvenido a esta, tu biblioteca virtual. Encontrarás libros fascinantes de autores reconocidos y universales en una amplia gama de géneros literarios, que van desde la literatura clásica, narrativa, lírica, dramática y griega hasta manuales de técnica, ingeniería, informática, medicina y ciencias naturales. 58.000 libros en 126 categorías directamente en tu teléfono móvil​, tablet y/o computadora.
+		</p>
 	</div>
 </div>

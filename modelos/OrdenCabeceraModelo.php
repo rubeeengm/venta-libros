@@ -49,8 +49,35 @@ class OrdenCabeceraModelo extends Modelo {
             $ordenCabecera = new OrdenCabecera();
             $ordenCabecera->setId((int) $result[$key]["ID"]);
             $ordenCabecera->setFecha($result[$key]["FECHA"]);
-            $ordenCabecera->setIva($result[$key]["IVA"]);
-            $ordenCabecera->setTotal($result[$key]["TOTAL"]);
+            $ordenCabecera->setIva((float)$result[$key]["IVA"]);
+            $ordenCabecera->setTotal((float)$result[$key]["TOTAL"]);
+            $ordenCabecera->setIdCliente((int) $result[$key]["IDCLIENTE"]);
+
+            $listaOrdenesCabecera[] = $ordenCabecera;
+        }
+
+        return $listaOrdenesCabecera;
+    }
+
+    function obtenerTodosPorId(int $id) : ?array {
+        $result = null;
+        $listaOrdenesCabecera = null;
+        $conexion = $this->obtenerConexion();
+        $statement = $conexion->prepare(
+            'SELECT O.ID, O.FECHA, O.IVA, O.TOTAL, O.IDCLIENTE FROM ORDENESCABECERA AS O WHERE O.IDCLIENTE = :id;'
+        );
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $this->cerrarConexion();
+
+        foreach ($result as $key => $value) {
+            $ordenCabecera = new OrdenCabecera();
+            $ordenCabecera->setId((int) $result[$key]["ID"]);
+            $ordenCabecera->setFecha($result[$key]["FECHA"]);
+            $ordenCabecera->setIva((float)$result[$key]["IVA"]);
+            $ordenCabecera->setTotal((float)$result[$key]["TOTAL"]);
             $ordenCabecera->setIdCliente((int) $result[$key]["IDCLIENTE"]);
 
             $listaOrdenesCabecera[] = $ordenCabecera;
