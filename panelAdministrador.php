@@ -71,12 +71,14 @@
 					      	</td>
 
 					      	<td>
-								<?php  echo '<a href="formularioCliente.php?id='.$cliente->getId().'" class="btn btn-info">Modificar</a>'; ?>
+								<?php echo '<a href="formularioCliente.php?id='.$cliente->getId().'" class="btn btn-info">Modificar</a>'; ?>
+								<?php echo '<a href="controladores/EliminarCliente.php?id='.$cliente->getId().'" class="btn btn-danger">Eliminar</a>'; ?>
 					      	</td>
 	    				</tr>
 	    			<?php endforeach; ?>
   				</tbody>
 			</table>
+			<?php echo '<a href="nuevoCliente.php" class="btn btn-info">Nuevo Cliente</a>'; ?>
 		</div>
 	</div>
 </div>

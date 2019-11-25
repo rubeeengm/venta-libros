@@ -50,6 +50,28 @@ class CategoriaModelo extends Modelo {
         return $listaCategorias;
     }
 
+    function obtenerPorId(int $id) : ?Categoria {
+        $result = null;
+        $categoria = null;
+        $conexion = $this->obtenerConexion();
+        $statement = $conexion->prepare('SELECT C.ID, C.NOMBRE FROM CATEGORIAS AS C WHERE C.ID = :id;');
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $this->cerrarConexion();
+
+        foreach ($result as $key => $value) {
+            $categoria = new Categoria();
+            $categoria->setId((int) $result[$key]["ID"]);
+            $categoria->setNombre($result[$key]["NOMBRE"]);
+
+            break;
+        }
+
+        return $categoria;
+    }
+
     /**
      * @param Categoria $categoria
      */

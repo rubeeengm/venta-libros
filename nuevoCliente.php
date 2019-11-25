@@ -1,24 +1,15 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/template/header.php'; ?>
-<?php require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/modelos/ClienteModelo.php'; ?>
-<?php require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/modelos/UsuarioModelo.php'; ?>
-
-<?php 
-	$clienteModelo = new ClienteModelo(); 
-	$cliente = $clienteModelo->obtenerPorId((int) $_GET['id']);
-	$usuarioModelo = new UsuarioModelo();
-	$usuario = $usuarioModelo->obtenerPorid((int) $cliente->getId());
-?>
+<?php require_once 'template/header.php'; ?>
 
 <div class="container mt-3">
 	<div class="row justify-content-center">
 		<div class="col col-md-6">
-			<form method="post" action="controladores/ActualizarCliente.php">
+			<form method="post" action="controladores/RegistroController.php">
 				<div class="form-group text-center">
-                    <a class="navbar-brand" href="panelAdministrador.php">
+                    <a class="navbar-brand" href="index.php">
                         <img src="assets/img/book-logo.png" alt="" style="height: 7vh; width: 7vh;">
                     </a>
 
-                    <h2>Actualizar Cliente</h2>
+                    <h2>Registro</h2>
                 </div>
 
 				<div class="form-group">
@@ -28,7 +19,7 @@
 						id="nombre"
 						name="nombre"
 						placeholder="Escriba su nombre" 
-						value="<?php echo $cliente->getNombre(); ?>"
+						value="<?php if(isset($_GET['nombre'])){ echo $_GET['nombre']; }?>"
 					>
 				</div>
 
@@ -39,7 +30,7 @@
 						id="apellidos"
 						name="apellidos"
 						placeholder="Escriba sus apellidos"
-						value="<?php echo $cliente->getApellido(); ?>"
+						value="<?php if(isset($_GET['apellidos'])){ echo $_GET['apellidos']; }?>"
 					>
 				</div>
 
@@ -50,7 +41,7 @@
 						id="correoElectronico"
 						name="correoElectronico"
 						placeholder="Escriba su correo electrónico"
-						value="<?php echo $cliente->getCorreoelectronico(); ?>"
+						value="<?php if(isset($_GET['correoElectronico'])){ echo $_GET['correoElectronico']; }?>"
 					>					
 				</div>
 
@@ -61,8 +52,18 @@
 						id="usuario"
 						name="usuario"
 						placeholder="Escriba su usuario"
-						value="<?php echo $usuario->getUsuario(); ?>"
+						value="<?php if(isset($_GET['usuario'])){ echo $_GET['usuario']; }?>"
 					>
+					<div class="" style="margin-top: 10px;">
+					<?php
+                    if(isset($_SESSION['error'])) {
+                        if(isset($_SESSION['error']) != null) {
+                            echo '<div class="alert alert-danger" role="alert">' . $_SESSION['error'] . '</div>';
+                            $_SESSION['error'] = null;
+                        }
+                    }
+                	?>
+					</div>
 				</div>
 
 				<div class="form-group">
@@ -72,19 +73,13 @@
 						id="password"
 						name="password"
 						placeholder="Escriba su Contraseña"
-						value="<?php echo $usuario->getContrasenia(); ?>"
 					>
 				</div>
 
 				<input type="submit" class="btn btn-info" 
 					id="btnRegistro" 
-					value="Actualizar"
+					value="Registrarse"
 				>
-
-				<?php  echo '<a href="panelAdministrador.php" class="btn btn-danger">Cancelar</a>'; ?>
-
-				<input type="hidden" name="idUsuario" value="<?php echo $usuario->getId(); ?>" />
-				<input type="hidden" name="idCliente" value="<?php echo $cliente->getId(); ?>" />
 			</form>
 		</div>
 	</div>

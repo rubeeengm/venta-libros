@@ -36,7 +36,11 @@ class ClienteModelo extends Modelo {
         $cliente = null;
 
         $conexion = $this->obtenerConexion();
-        $statement = $conexion->prepare('SELECT C.ID, C.NOMBRE, C.APELLIDO, C.CORREOELECTRONICO, C.IDUSUARIO FROM CLIENTES AS C WHERE C.IDUSUARIO = :id;');
+        $statement = $conexion->prepare(
+            'SELECT C.ID, C.NOMBRE, C.APELLIDO, C.CORREOELECTRONICO, C.IDUSUARIO 
+            FROM CLIENTES AS C 
+            WHERE C.IDUSUARIO = :id;'
+        );
 
         $statement->bindValue(':id', $id);
         $statement->execute();
@@ -77,7 +81,7 @@ class ClienteModelo extends Modelo {
             $cliente->setNombre($result[$key]["NOMBRE"]);
             $cliente->setApellido($result[$key]["APELLIDO"]);
             $cliente->setCorreoelectronico($result[$key]["CORREOELECTRONICO"]);
-            $cliente->setId((int) $result[$key]["IDUSUARIO"]);
+            $cliente->setIdUsuario((int) $result[$key]["IDUSUARIO"]);
 
             break;
         }

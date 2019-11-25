@@ -1,9 +1,3 @@
-<?php 
-	/*if(!isset($_SESSION['rol'])) {
-		header("Location: index.php");
-	}*/
-?>
-
 <?php require_once 'template/header.php'; ?>
 
 <?php 
@@ -44,12 +38,13 @@
 				      		</td>
 
 					      	<td>
-					      		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Modificar</button>
+							  <?php  echo '<a href="formularioCategoria.php?id='.$categoria->getId().'" class="btn btn-info">Modificar</a>'; ?>
 					      	</td>
 	    				</tr>
 	    			<?php endforeach; ?>
   				</tbody>
 			</table>
+			<?php echo '<a href="nuevaCategoria.php" class="btn btn-info">Nueva Categoria</a>'; ?>
 		</div>
 	</div>
 </div>

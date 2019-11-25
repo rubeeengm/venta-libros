@@ -1,11 +1,11 @@
 <?php require_once 'template/menu.php'; ?>
 
 <?php
-	/*if(isset($_SESSION['rol'])) {
+	if(isset($_SESSION['rol'])) {
 		if ($_SESSION['rol'] == 1) {
 			header("Location: panelAdministrador.php");
 		}
-	}*/
+	}
 ?>
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
