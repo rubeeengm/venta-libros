@@ -8,5 +8,6 @@ class OrdenUsuario {
 	public $precio;
 	public $importe;
     public $idCliente;
-    public $nombre;
+	public $nombre;
+	public $usuario;
 }

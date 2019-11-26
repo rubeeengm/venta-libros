@@ -35,13 +35,19 @@ class OrdenCabeceraModelo extends Modelo {
      */
     function obtenerTodos() : ?array {
         $result = null;
-        $listaOrdenesCabecera = null;
+        $listaOrdenes = null;
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'SELECT O.ID, O.FECHA, O.IVA, O.TOTAL, O.IDCLIENTE, C.NOMBRE, U.USUARIO
+            'SELECT O.ID, O.FECHA, D.CANTIDAD, D.PRECIO, D.IMPORTE, O.IDCLIENTE, L.NOMBRE, U.USUARIO
             FROM ORDENESCABECERA AS O 
-            JOIN CLIENTES AS C ON O.IDCLIENTE = C.ID 
-            JOIN USUARIOS AS U ON C.IDUSUARIO = U.ID;'
+            JOIN ORDENESDETALLE AS D
+            ON O.ID = D.IDORDENCABECERA
+            JOIN LIBROS AS L
+            ON D.IDLIBRO = L.ID
+            JOIN CLIENTES AS  C
+            ON O.IDCLIENTE = C.ID
+            JOIN USUARIOS AS U
+            ON C.IDUSUARIO = U.ID'
         );
 
         $statement->execute();
@@ -50,18 +56,20 @@ class OrdenCabeceraModelo extends Modelo {
         $this->cerrarConexion();
 
         foreach ($result as $key => $value) {
-            $ordenCabecera = new OrdenCabecera();
-            $ordenCabecera->setId((int) $result[$key]["ID"]);
-            $ordenCabecera->setFecha($result[$key]["FECHA"]);
-            $ordenCabecera->setIva((float)$result[$key]["IVA"]);
-            $ordenCabecera->setTotal((float)$result[$key]["TOTAL"]);
-            $ordenCabecera->setIdCliente((int) $result[$key]["IDCLIENTE"]);
-            $ordenCabecera->usuario = $result[$key]["USUARIO"];
+            $ordenUsuario = new OrdenUsuario();
+            $ordenUsuario->id = (int) $result[$key]["ID"];
+            $ordenUsuario->fecha = $result[$key]["FECHA"];
+            $ordenUsuario->cantidad = (int) $result[$key]["CANTIDAD"];
+            $ordenUsuario->precio = (float) $result[$key]["PRECIO"];
+            $ordenUsuario->importe = (float) $result[$key]["IMPORTE"];
+            $ordenUsuario->idCliente = (int) $result[$key]["IDCLIENTE"];
+            $ordenUsuario->nombre = $result[$key]["NOMBRE"];
+            $ordenUsuario->usuario = $result[$key]["USUARIO"];
 
-            $listaOrdenesCabecera[] = $ordenCabecera;
+            $listaOrdenes[] = $ordenUsuario;
         }
 
-        return $listaOrdenesCabecera;
+        return $listaOrdenes;
     }
 
     function obtenerTodosPorId(int $id) : ?array {

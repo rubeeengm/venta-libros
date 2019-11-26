@@ -20,38 +20,43 @@
 					<tr>
 					  	<th scope="col">#</th>
 						<th scope="col">Usuario</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">Cantidad</th>
+					  	<th scope="col">Precio</th>
+					  	<th scope="col">Importe</th>
 					  	<th scope="col">Fecha</th>
-					  	<th scope="col">Subtotal</th>
-					  	<th scope="col">IVA</th>
-					  	<th scope="col">Total</th>
 					</tr>
 				</thead>
   				
   				<tbody>
-  					<?php foreach ($ordenes as $orden): ?>
+  					<?php if($ordenes != null) foreach ($ordenes as $orden): ?>
 	    				<tr>
 	      					<th scope="row">
-	      						<?php echo $orden->getId(); ?>
+	      						<?php echo $orden->id; ?>
 	      					</th>
 
 							<td>
-					      		<?php echo utf8_encode($orden->usuario); ?>
+								<?php echo utf8_encode($orden->usuario); ?>
 				      		</td>
 
 					      	<td>
-					      		<?php echo utf8_encode($orden->getFecha()); ?>
+					      		<?php echo utf8_encode($orden->nombre); ?>
 				      		</td>
 
 					      	<td>
-					      		$<?php echo $orden->getTotal() - $orden->getIva(); ?>
+					      		<?php echo $orden->cantidad; ?>
 					      	</td>
 
 					      	<td>
-					      		$<?php echo $orden->getIva(); ?>
+					      		$<?php echo $orden->precio; ?>
 					      	</td>
 
 					      	<td>
-					      		$<?php echo $orden->getTotal(); ?>
+					      		$<?php echo $orden->importe; ?>
+					      	</td>
+
+							<td>
+					      		$<?php echo $orden->fecha; ?>
 					      	</td>
 	    				</tr>
 	    			<?php endforeach; ?>
