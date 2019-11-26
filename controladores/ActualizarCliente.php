@@ -10,6 +10,7 @@ $usuario = new Usuario();
 $usuario->setUsuario($_POST['usuario']);
 $usuario->setContrasenia($_POST['password']);
 $usuario->setId((int) $_POST['idUsuario']);
+$usuario->setRoL((int)$_POST['rol']);
 
 $idUsuario = $usuarioModelo->actualizar($usuario);
 

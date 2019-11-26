@@ -71,8 +71,10 @@ class LibroModelo extends Modelo {
         $listaLibros = null;
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'SELECT L.ID, L.NOMBRE, L.AUTOR, L.PRECIO, L.EXISTENCIA, L.IDCATEGORIA, L.IMAGEN, C.NOMBRE AS CATEGORIA FROM LIBROS AS L
-JOIN CATEGORIAS AS C ON L.IDCATEGORIA = C.ID;'
+            'SELECT L.ID, L.NOMBRE, L.AUTOR, L.PRECIO, L.EXISTENCIA, L.IDCATEGORIA, L.IMAGEN, C.NOMBRE AS CATEGORIA 
+            FROM LIBROS AS L
+            JOIN CATEGORIAS AS C 
+            ON L.IDCATEGORIA = C.ID;'
         );
 
         $statement->execute();
@@ -132,5 +134,27 @@ JOIN CATEGORIAS AS C ON L.IDCATEGORIA = C.ID;'
 
         $statement->execute();
         $this->cerrarConexion();
+    }
+
+    function verificarExistenciaOrden(int $id) : int {
+        $conexion = $this->obtenerConexion();
+        $statement = $conexion->prepare(
+            'SELECT 
+                IF(COUNT(ID)>0,1,0)
+            FROM 
+                ORDENESDETALLE 
+            WHERE 
+                IDLIBRO = :id;'
+        );
+
+        $statement->bindValue(':id', $id);
+
+        $statement->execute();
+        $resultado = $statement->fetch();
+        $this->cerrarConexion();
+
+        $existe = (int) $resultado[0];
+
+        return $existe;
     }
 }

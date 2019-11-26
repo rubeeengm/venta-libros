@@ -76,9 +76,17 @@
 					>
 				</div>
 
+				<div class="form-group">
+					<label for="">Rol</label>
+					<select name="rol" class="form-control">
+						<option value="1">Administrador</option>
+						<option value="0">Cliente</option>
+					</select>
+				</div>
+
 				<input type="submit" class="btn btn-info" 
 					id="btnRegistro" 
-					value="Registrarse"
+					value="Crear"
 				>
 
 				<?php  echo '<a href="panelAdministrador.php" class="btn btn-danger">Cancelar</a>'; ?>

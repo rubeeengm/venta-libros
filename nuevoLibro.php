@@ -62,7 +62,7 @@
 
 				<input type="submit" class="btn btn-info" 
 					id="btnRegistro" 
-					value="Registrar"
+					value="Crear"
 				>
 
 				<?php  echo '<a href="libros.php" class="btn btn-danger">Cancelar</a>'; ?>

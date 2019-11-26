@@ -23,7 +23,8 @@ if(isset($_POST['loginUsuario'])) {
 			$usuario = $usuarioModelo->obtenerPorid($idUsuario);
 			//guardamos el rol en la sesión
 			$_SESSION['rol'] = $usuario->getRol();
-
+			$_SESSION['usuario'] = $usuario->getUsuario();
+			
 			if($usuario->getRol()) {
 				header("Location: ../panelAdministrador.php");
 			} else {

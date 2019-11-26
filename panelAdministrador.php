@@ -31,6 +31,7 @@
 					  	<th scope="col">Apellidos</th>
 					  	<th scope="col">Correo Electrónico</th>
 					  	<th scope="col">Usuario</th>
+						<th scope="col">Rol</th>
 					  	<th scope="col">Estado</th>
 					  	<th scope="col">Acción</th>
 					</tr>
@@ -68,6 +69,17 @@
 					      				echo "Inactivo";
 					      			}
 				      			?>
+					      	</td>
+
+							<td>
+								<?php 
+									$rol = $cliente->getUsuario()->getRol(); 
+									if($rol) {
+										echo "Administrador";
+									} else {
+										echo "Cliente";
+									}
+								?>
 					      	</td>
 
 					      	<td>

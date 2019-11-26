@@ -48,8 +48,9 @@
 
 	    <div class="form-inline my-2 my-lg-0">
 	    	<div class="nav-item">
-	    		<?php 
+				<?php 
 	    			if(isset($_SESSION['idUsuario'])) {
+						echo '<div><center><span>'.$_SESSION['usuario'].'</span><span> &nbsp; <img src="assets/img/profile.png" height="15px" width="15px"></span></center></div>';
 	    				echo '<a class="nav-link" href="controladores/cerrarSesion.php" title="">Cerrar Sesión</a>';
 	    			} else {
 	    				echo '<a class="nav-link" href="login.php" title="">Iniciar Sesión</a>';

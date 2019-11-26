@@ -19,6 +19,7 @@
 				<thead>
 					<tr>
 					  	<th scope="col">#</th>
+						<th scope="col">Usuario</th>
 					  	<th scope="col">Fecha</th>
 					  	<th scope="col">Subtotal</th>
 					  	<th scope="col">IVA</th>
@@ -32,6 +33,10 @@
 	      					<th scope="row">
 	      						<?php echo $orden->getId(); ?>
 	      					</th>
+
+							<td>
+					      		<?php echo utf8_encode($orden->usuario); ?>
+				      		</td>
 
 					      	<td>
 					      		<?php echo utf8_encode($orden->getFecha()); ?>

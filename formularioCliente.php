@@ -76,6 +76,14 @@
 					>
 				</div>
 
+				<div class="form-group">
+					<label for="">Rol</label>
+					<select name="rol" class="form-control">
+						<option value="1" <?php if($usuario->getRol()) echo "selected"; ?>>Administrador</option>
+						<option value="0"<?php if($usuario->getRol() == 0) echo "selected"; ?>>Cliente</option>
+					</select>
+				</div>
+
 				<input type="submit" class="btn btn-info" 
 					id="btnRegistro" 
 					value="Actualizar"

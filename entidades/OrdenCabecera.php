@@ -6,7 +6,8 @@ class OrdenCabecera {
 	private $fecha;
 	private $iva;
 	private $total;
-	private $idCliente;
+    private $idCliente;
+    public $usuario;
 
     /**
      * @return int

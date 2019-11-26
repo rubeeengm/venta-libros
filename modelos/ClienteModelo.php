@@ -105,6 +105,7 @@ class ClienteModelo extends Modelo {
                 , U.USUARIO
                 , U.CONTRASENIA
                 , U.ESTADO
+                , U.ROL
             FROM
                 CLIENTES AS C
             JOIN
@@ -130,6 +131,7 @@ class ClienteModelo extends Modelo {
             $usuario->setUsuario($result[$key]["USUARIO"]);
             $usuario->setContrasenia($result[$key]["CONTRASENIA"]);
             $usuario->setEstado((int) $result[$key]["ESTADO"]);
+            $usuario->setRoL((int) $result[$key]["ROL"]);
 
             $cliente->setUsuario($usuario);
 

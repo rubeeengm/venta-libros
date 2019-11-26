@@ -2,6 +2,7 @@
 declare(strict_types = 1);
 
 require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/entidades/OrdenCabecera.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/entidades/OrdenUsuario.php';
 require_once $_SERVER['DOCUMENT_ROOT'] .'/venta-libros/modelos/Modelo.php';
 
 class OrdenCabeceraModelo extends Modelo {
@@ -37,7 +38,10 @@ class OrdenCabeceraModelo extends Modelo {
         $listaOrdenesCabecera = null;
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'SELECT O.ID, O.FECHA, O.IVA, O.TOTAL, O.IDCLIENTE FROM ORDENESCABECERA AS O;'
+            'SELECT O.ID, O.FECHA, O.IVA, O.TOTAL, O.IDCLIENTE, C.NOMBRE, U.USUARIO
+            FROM ORDENESCABECERA AS O 
+            JOIN CLIENTES AS C ON O.IDCLIENTE = C.ID 
+            JOIN USUARIOS AS U ON C.IDUSUARIO = U.ID;'
         );
 
         $statement->execute();
@@ -52,6 +56,7 @@ class OrdenCabeceraModelo extends Modelo {
             $ordenCabecera->setIva((float)$result[$key]["IVA"]);
             $ordenCabecera->setTotal((float)$result[$key]["TOTAL"]);
             $ordenCabecera->setIdCliente((int) $result[$key]["IDCLIENTE"]);
+            $ordenCabecera->usuario = $result[$key]["USUARIO"];
 
             $listaOrdenesCabecera[] = $ordenCabecera;
         }
@@ -61,10 +66,16 @@ class OrdenCabeceraModelo extends Modelo {
 
     function obtenerTodosPorId(int $id) : ?array {
         $result = null;
-        $listaOrdenesCabecera = null;
+        $listaOrdenes = null;
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'SELECT O.ID, O.FECHA, O.IVA, O.TOTAL, O.IDCLIENTE FROM ORDENESCABECERA AS O WHERE O.IDCLIENTE = :id;'
+            'SELECT O.ID, O.FECHA, D.CANTIDAD, D.PRECIO, D.IMPORTE, O.IDCLIENTE, L.NOMBRE 
+            FROM ORDENESCABECERA AS O 
+            JOIN ORDENESDETALLE AS D
+            ON O.ID = D.IDORDENCABECERA
+            JOIN LIBROS AS L
+            ON D.IDLIBRO = L.ID
+            WHERE O.IDCLIENTE = :id;'
         );
         $statement->bindValue(':id', $id);
         $statement->execute();
@@ -73,17 +84,19 @@ class OrdenCabeceraModelo extends Modelo {
         $this->cerrarConexion();
 
         foreach ($result as $key => $value) {
-            $ordenCabecera = new OrdenCabecera();
-            $ordenCabecera->setId((int) $result[$key]["ID"]);
-            $ordenCabecera->setFecha($result[$key]["FECHA"]);
-            $ordenCabecera->setIva((float)$result[$key]["IVA"]);
-            $ordenCabecera->setTotal((float)$result[$key]["TOTAL"]);
-            $ordenCabecera->setIdCliente((int) $result[$key]["IDCLIENTE"]);
+            $ordenUsuario = new OrdenUsuario();
+            $ordenUsuario->id = (int) $result[$key]["ID"];
+            $ordenUsuario->fecha = $result[$key]["FECHA"];
+            $ordenUsuario->cantidad = (int) $result[$key]["CANTIDAD"];
+            $ordenUsuario->precio = (float) $result[$key]["PRECIO"];
+            $ordenUsuario->importe = (float) $result[$key]["IMPORTE"];
+            $ordenUsuario->idCliente = (int) $result[$key]["IDCLIENTE"];
+            $ordenUsuario->nombre = $result[$key]["NOMBRE"];
 
-            $listaOrdenesCabecera[] = $ordenCabecera;
+            $listaOrdenes[] = $ordenUsuario;
         }
 
-        return $listaOrdenesCabecera;
+        return $listaOrdenes;
     }
 
     /**

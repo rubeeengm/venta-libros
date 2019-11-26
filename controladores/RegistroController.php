@@ -40,6 +40,7 @@ if(!isset($_POST['nombre'])) {
 		$usuario = new Usuario();
 		$usuario->setUsuario($_POST['usuario']);
 		$usuario->setContrasenia($_POST['password']);
+		$usuario->setRoL((int)$_POST['rol']);
 
 		$idUsuario = $usuarioModelo->insertar($usuario);
 
@@ -53,6 +54,7 @@ if(!isset($_POST['nombre'])) {
 		$idCliente = $clienteModelo->insertar($cliente);
 		$_SESSION['clienteId'] = $idCliente;
 		$_SESSION['idUsuario'] = $idUsuario;
+		$_SESSION['usuario'] = $_POST['usuario'];
 
 	 	header("Location: ../index.php");
 	}

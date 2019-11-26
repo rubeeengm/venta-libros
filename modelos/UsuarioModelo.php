@@ -12,11 +12,12 @@ class UsuarioModelo extends Modelo {
     function insertar(Usuario $usuario) : int {
         $conexion = $this->obtenerConexion();
         $statement = $conexion->prepare(
-            'INSERT INTO USUARIOS (USUARIO, CONTRASENIA) VALUES (:usuario, :contrasenia)'
+            'INSERT INTO USUARIOS (USUARIO, CONTRASENIA, ROL) VALUES (:usuario, :contrasenia, :rol)'
         );
 
         $statement->bindValue(':usuario', $usuario->getUsuario());
         $statement->bindValue(':contrasenia', $usuario->getContrasenia());
+        $statement->bindValue(':rol', $usuario->getRol());
 
         $statement->execute();
 
@@ -66,11 +67,13 @@ class UsuarioModelo extends Modelo {
             'UPDATE USUARIOS 
             SET USUARIO = :usuario
             , CONTRASENIA = :contrasenia
+            , ROL = :rol
             WHERE ID = :id;'
         );
 
         $statement->bindValue(':usuario', $usuario->getUsuario());
         $statement->bindValue(':contrasenia', $usuario->getContrasenia());
+        $statement->bindValue(':rol', $usuario->getRol());
         $statement->bindValue(':id', $usuario->getId());
 
         $statement->execute();

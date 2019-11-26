@@ -28,7 +28,18 @@ class OrdenDetalleModelo extends Modelo {
 
         $this->cerrarConexion();
 
+        $this->disminuirLibros($ordenDetalle->getIdLibro());
+
         return $id;
+    }
+
+    function disminuirLibros(int $id) : void {
+        $conexion = $this->obtenerConexion();
+        $statement = $conexion->prepare('UPDATE LIBROS SET EXISTENCIA = EXISTENCIA - 1 WHERE ID = :id;');
+
+        $statement->bindValue(':id', $id);
+
+        $statement->execute();
     }
 
     /**
