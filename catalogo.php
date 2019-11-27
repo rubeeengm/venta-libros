@@ -24,7 +24,7 @@
 						src="assets/libros/<?php echo $libro->getImagen(); ?>"
 					>
 					<div class="card-body" style="width: 241px; height: 238px;">
-						<h5 class="card-title"><?php echo utf8_encode($libro->getNombre()); ?></h5>
+						<h5 class="card-title"><?php echo $libro->getNombre(); ?></h5>
 						<h3>$<?php echo $libro->getPrecio(); ?></h3>
 						<?php if(isset($_SESSION['idUsuario'])) : ?>
 							<label>

@@ -19,7 +19,7 @@ class LibroModelo extends Modelo {
         $statement->bindValue(':nombre', $libro->getNombre());
         $statement->bindValue(':autor', $libro->getAutor());
         $statement->bindValue(':precio', $libro->getPrecio());
-        $statement->bindValue(':existencia', 50);
+        $statement->bindValue(':existencia', $libro->getExistencia());
         $statement->bindValue(':idCategoria', $libro->getIdCategoria());
         $statement->bindValue(':imagen', "prueba.png");
 
@@ -110,6 +110,7 @@ class LibroModelo extends Modelo {
             , AUTOR = :autor
             , PRECIO = :precio
             , IDCATEGORIA = :idCategoria 
+            , EXISTENCIA = :existencia
             WHERE ID = :id;'
         );
 
@@ -117,6 +118,7 @@ class LibroModelo extends Modelo {
         $statement->bindValue(':autor', $libro->getAutor());
         $statement->bindValue(':precio', $libro->getPrecio());
         $statement->bindValue(':idCategoria', $libro->getIdCategoria());
+        $statement->bindValue(':existencia', $libro->getExistencia());
         $statement->bindValue(':id', $libro->getId());
 
         $statement->execute();

@@ -36,11 +36,11 @@
 	      					</th>
 
 							<td>
-								<?php echo utf8_encode($orden->usuario); ?>
+								<?php echo $orden->usuario; ?>
 				      		</td>
 
 					      	<td>
-					      		<?php echo utf8_encode($orden->nombre); ?>
+					      		<?php echo $orden->nombre; ?>
 				      		</td>
 
 					      	<td>

@@ -19,6 +19,8 @@
 						id="nombre"
 						name="nombre"
 						placeholder="Escriba su nombre" 
+						minlength=3
+						maxlength=15
 						value="<?php if(isset($_GET['nombre'])){ echo $_GET['nombre']; }?>"
 					>
 				</div>
@@ -29,6 +31,8 @@
 						required
 						id="apellidos"
 						name="apellidos"
+						minlength=3
+						maxlength=15
 						placeholder="Escriba sus apellidos"
 						value="<?php if(isset($_GET['apellidos'])){ echo $_GET['apellidos']; }?>"
 					>
@@ -40,6 +44,7 @@
 						required
 						id="correoElectronico"
 						name="correoElectronico"
+						maxlength=30
 						placeholder="Escriba su correo electrónico"
 						value="<?php if(isset($_GET['correoElectronico'])){ echo $_GET['correoElectronico']; }?>"
 					>					
@@ -51,6 +56,8 @@
 						required
 						id="usuario"
 						name="usuario"
+						minlength=5
+						maxlength=15
 						placeholder="Escriba su usuario"
 						value="<?php if(isset($_GET['usuario'])){ echo $_GET['usuario']; }?>"
 					>
@@ -72,6 +79,8 @@
 						required
 						id="password"
 						name="password"
+						minlength=5
+						maxlength=15
 						placeholder="Escriba su Contraseña"
 					>
 				</div>

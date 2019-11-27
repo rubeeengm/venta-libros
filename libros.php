@@ -51,11 +51,11 @@
 	      					</th>
 
 					      	<td>
-					      		<?php echo utf8_encode($libro->getNombre()); ?>
+					      		<?php echo $libro->getNombre(); ?>
 				      		</td>
 
 					      	<td>
-					      		<?php echo utf8_encode($libro->getAutor()); ?>
+					      		<?php echo $libro->getAutor(); ?>
 					      	</td>
 
 					      	<td>

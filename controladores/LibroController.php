@@ -10,6 +10,7 @@ $libro->setNombre($_POST['nombre']);
 $libro->setAutor($_POST['autor']);
 $libro->setPrecio((float) $_POST['precio']);
 $libro->setIdCategoria((int) $_POST['categoria']);
+$libro->setExistencia((int) $_POST['existencia']);
 var_dump($libro);
 $libroModelo->insertar($libro);
 

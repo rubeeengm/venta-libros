@@ -18,6 +18,8 @@
 					<label> Nombre </label>
 					<input type="text" class="form-control" 
 						required
+						minlength=3
+						maxlength=15
 						id="nombre"
 						name="nombre"
 						placeholder="Escriba la categoria" 

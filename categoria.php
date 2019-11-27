@@ -34,7 +34,7 @@
 	      					</th>
 
 					      	<td>
-					      		<?php echo utf8_encode($categoria->getNombre()); ?>
+					      		<?php echo $categoria->getNombre(); ?>
 				      		</td>
 
 					      	<td>

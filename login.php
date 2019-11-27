@@ -13,11 +13,27 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" id="loginUsuario" name="loginUsuario" class="form-control mb-4" placeholder="Usuario">
+                    <input 
+                        type="text" 
+                        id="loginUsuario" 
+                        name="loginUsuario" 
+                        class="form-control mb-4" 
+                        placeholder="Usuario"
+                        required
+						maxlength=15
+                    >
                 </div>
 
                 <div class="form-group">
-                    <input type="password" id="loginPassword" name="loginPassword" class="form-control mb-4" placeholder="Password">
+                    <input 
+                        type="password" 
+                        id="loginPassword" 
+                        name="loginPassword" 
+                        class="form-control mb-4" 
+                        placeholder="Password"
+                        required
+						maxlength=15
+                    >
                 </div>
 
                 <button class="btn btn-info btn-block my-4" type="submit">Iniciar Sesión</button>

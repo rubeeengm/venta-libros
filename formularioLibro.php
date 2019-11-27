@@ -24,6 +24,8 @@
 					<label> Nombre </label>
 					<input type="text" class="form-control" 
 						required
+						minlength=3
+						maxlength=15
 						id="nombre"
 						name="nombre"
 						placeholder="Escribe el nombre" 
@@ -35,6 +37,8 @@
 					<label> Autor </label>
 					<input type="text" class="form-control" 
 						required
+						minlength=3
+						maxlength=15
 						id="autor"
 						name="autor"
 						placeholder="Escribe el nombre del autor" 
@@ -44,12 +48,26 @@
 
 				<div class="form-group">
 					<label> Precio </label>
-					<input type="text" class="form-control" 
+					<input type="number" class="form-control" 
 						required
+						min=1
+						max=1000
 						id="precio"
 						name="precio"
 						placeholder="Escribe el precio" 
 						value="<?php echo $libro->getPrecio(); ?>"
+					>
+				</div>
+
+				<div class="form-group">
+					<label> Existencia </label>
+					<input type="number" class="form-control" 
+						required
+						min=1
+						id="existencia"
+						name="existencia"
+						placeholder="Escribe la existencia" 
+						value="<?php echo $libro->getExistencia(); ?>"
 					>
 				</div>
 

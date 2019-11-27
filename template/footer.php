@@ -14,7 +14,11 @@
 
 		<script type="text/javascript">
 			$('.carousel').carousel();
-			$('#listadoClientes').DataTable();
+			$('#listadoClientes').DataTable( {
+  "columnDefs": [
+    { "width": "10%", "targets": 2 }
+  ]
+} );
 		</script>
 	</body>
 </html>

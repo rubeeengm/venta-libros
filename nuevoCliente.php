@@ -3,13 +3,13 @@
 <div class="container mt-3">
 	<div class="row justify-content-center">
 		<div class="col col-md-6">
-			<form method="post" action="controladores/RegistroController.php">
+			<form method="post" action="controladores/RegistroController2.php">
 				<div class="form-group text-center">
                     <a class="navbar-brand" href="index.php">
                         <img src="assets/img/book-logo.png" alt="" style="height: 7vh; width: 7vh;">
                     </a>
 
-                    <h2>Registro</h2>
+                    <h2>Agregar Cliente</h2>
                 </div>
 
 				<div class="form-group">
@@ -20,6 +20,8 @@
 						name="nombre"
 						placeholder="Escriba su nombre" 
 						value="<?php if(isset($_GET['nombre'])){ echo $_GET['nombre']; }?>"
+						minlength=3
+						maxlength=15
 					>
 				</div>
 
@@ -27,6 +29,8 @@
 					<label> Apellidos </label>
 					<input type="text" class="form-control" 
 						required
+						minlength=3
+						maxlength=15
 						id="apellidos"
 						name="apellidos"
 						placeholder="Escriba sus apellidos"
@@ -38,6 +42,7 @@
 					<label> Correo Electrónico </label>
 					<input type="email" class="form-control"
 						required
+						maxlength=30
 						id="correoElectronico"
 						name="correoElectronico"
 						placeholder="Escriba su correo electrónico"
@@ -49,6 +54,8 @@
 					<label> Usuario </label>
 					<input type="text" class="form-control"
 						required
+						minlength=5
+						maxlength=15
 						id="usuario"
 						name="usuario"
 						placeholder="Escriba su usuario"
@@ -70,6 +77,8 @@
 					<label> Contraseña </label>
 					<input type="password" class="form-control" 
 						required
+						minlength=5
+						maxlength=15
 						id="password"
 						name="password"
 						placeholder="Escriba su Contraseña"

@@ -25,6 +25,8 @@
 					<label> Nombre </label>
 					<input type="text" class="form-control" 
 						required
+						minlength=3
+						maxlength=15
 						id="nombre"
 						name="nombre"
 						placeholder="Escriba su nombre" 
@@ -36,6 +38,8 @@
 					<label> Apellidos </label>
 					<input type="text" class="form-control" 
 						required
+						minlength=3
+						maxlength=15
 						id="apellidos"
 						name="apellidos"
 						placeholder="Escriba sus apellidos"
@@ -47,6 +51,8 @@
 					<label> Correo Electrónico </label>
 					<input type="email" class="form-control"
 						required
+						minlength=3
+						maxlength=15
 						id="correoElectronico"
 						name="correoElectronico"
 						placeholder="Escriba su correo electrónico"
@@ -58,6 +64,8 @@
 					<label> Usuario </label>
 					<input type="text" class="form-control"
 						required
+						minlength=5
+						maxlength=15
 						id="usuario"
 						name="usuario"
 						placeholder="Escriba su usuario"
@@ -69,6 +77,8 @@
 					<label> Contraseña </label>
 					<input type="password" class="form-control" 
 						required
+						minlength=5
+						maxlength=15
 						id="password"
 						name="password"
 						placeholder="Escriba su Contraseña"

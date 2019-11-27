@@ -11,6 +11,7 @@ $libro->setAutor($_POST['autor']);
 $libro->setPrecio((float) $_POST['precio']);
 $libro->setIdCategoria((int) $_POST['categoria']);
 $libro->setId((int) $_POST['idLibro']);
+$libro->setExistencia((int) $_POST['existencia']);
 $libroModelo->actualizar($libro);
 
 header("Location: ../libros.php");
